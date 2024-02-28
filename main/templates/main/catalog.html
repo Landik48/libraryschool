@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/main/css/catalog.css' %}" type="text/css">
+    <title>Каталог</title>
+</head>
+<body>
+    {% block content %}
+    <div class="head">
+        <h1>Каталог школьной литературы</h1>
+        <div class="menu">
+            <div class="stick">
+                <div class="first"></div>
+                <div class="second"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content-menu">
+        <h3>Выберете жанр</h3>
+        <form method="post">{% csrf_token %}<button type="submit" name="all">Все произведения</button></form>
+        <form method="post">{% csrf_token %}<button type="submit" name="action_movie">Боевик</button></form>
+        <form method="post">{% csrf_token %}<button type="submit" name="romance">Романтика</button></form>
+        <form method="post">{% csrf_token %}<button type="submit" name="fantastic">Фантастика</button></form>
+        <form method="post">{% csrf_token %}<button type="submit" name="history">История</button></form>
+        <form method="post">{% csrf_token %}<button type="submit" name="drama">Драма</button></form>
+        <form method="post">{% csrf_token %}<button type="submit" name="comedy">Комедия</button></form>
+        
+        <div class="line"></div>
+        <a id="main" href="../">На главную</a>
+    </div>
+
+    <h1 id="name_rub">{{ title }}</h2> 
+        <div class="content">
+            {% for el in data %}
+            <div class="block">
+                <img src="{{ el.img_link }}" alt="К сожалению, здесь отсутствует картинка(">
+                <h2>{{ el.title }}</h2>
+                <p>{{ el.description }}</p>
+                <h4>Автор: {{ el.author }}</h4>
+                <h4>Жанр: {{ el.genre }}</h4>
+                <h4>Наличие: {{ el.availability }}</h4>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% endblock %}
+</body>
+    <script src="{% static 'main/js/anime.min.js' %}"></script>
+    <script>
+        const btn = document.querySelector('.stick')
+        let block = document.querySelector('.content-menu')
+        let count = 0
+            document.addEventListener('click', (e) => {
+            const click = e.composedPath().includes(btn);
+            if (click){
+                
+                count++
+                if (count === 1){
+                anime({
+                    targets: '.content-menu',
+                    translateX: [
+                        { value: -200, duration: 1 },
+                        { value: 0, duration: 1500 }]}),
+
+                anime({
+                    targets: '.first',
+                    translateY: {
+                        value: 7.5,
+                        easing: 'easeInOutSine',
+                        duration: 200},
+                    rotate: {
+                        value: -45,
+                        duration: 1800,
+                    }
+                }),
+                
+                anime({
+                    targets: '.second',
+                    translateY: {
+                        value: -7.5,
+                        easing: 'easeInOutSine',
+                        duration: 200},
+                    rotate: {
+                        value: 45,
+                        duration: 1800,
+                    }}),
+
+                setTimeout(function () {
+                    block.style.display = 'flex'
+                }, 100)}
+                }
+
+                if(count === 2) {
+                    count = 0
+                    block.style.display = 'none'
+
+                    anime({
+                        targets: '.first',
+                        translateY: 0,
+                        rotate: 0
+                        }),
+
+                    anime({
+                        targets: '.second',
+                        translateY: 0,
+                        rotate: 0
+                        })}
+        })
+    </script>
+</html>

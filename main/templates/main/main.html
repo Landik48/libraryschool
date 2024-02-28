@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/main/css/main.css' %}" type="text/css">
+    <title>Главная</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Добро пожаловать на сайт школьной библиотеки</h1>
+        <h2>Здесь вы увидете все книги, которые есть в наличии, сможете порекомендовать книгу для увеличения ассортимента и найти книгу на свой вкус благодаря сортировке по жанрам</h2>
+    </div>
+        <form action="/catalog">
+            <button class="btn1" type="submit">Перейти в каталог</button>
+        </form>
+        <form action="/bookwishes">
+            <button class="btn2" type="submit">Перейти в книгу пожеланий</button>
+        </form>  
+</body>
+<script src="{% static 'main/js/anime.min.js' %}"></script>
+<script>
+    const btn1 = document.querySelector('.btn1')
+    btn1.addEventListener('mouseover', function() {
+        anime({
+            targets: '.btn1',
+            translateY: -10,
+            duration: 1000
+                })});
+
+    btn1.addEventListener('mouseout', function() {
+        anime({
+            targets: '.btn1',
+            translateY: 0,
+            duration: 1000
+                })});
+    
+    const btn2 = document.querySelector('.btn2')
+    btn2.addEventListener('mouseover', function() {
+        anime({
+            targets: '.btn2',
+            translateY: -10,
+            duration: 1000
+                })});
+
+    btn2.addEventListener('mouseout', function() {
+        anime({
+            targets: '.btn2',
+            translateY: 0,
+            duration: 1000
+                })});
+</script>
+</html>
