@@ -1,23 +1,59 @@
 body {
     background-image: url('../img/catalog_fon.jpg');
     scroll-behavior: auto;
+    background-size: cover;
+}
+
+@media (max-width: 1020px){
+    h1{
+        font-size: 25px;
+    }
+    h2{
+        font-size: 15px;
+    }
+    .btn1, .btn2{
+        font-size: 15px;
+    }
+    img{
+        width: 200px;
+        height: 300px;
+    }
+    .block{
+        width: 200px;
+    }
+    .title {
+        font-size: 25px;
+        margin-top: 30px;
+    }
+    .stick div{
+        width: 30px;
+        height: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        background-color: black;
+    }
+    .stick {
+        margin-right: 20px;
+        margin-left: 50px;
+        padding-top: 30px;
+
+    }
+    .title{
+        margin-left: 10px;
+        padding-top: 6px;
+        padding-bottom: 15px;
+    }
 }
 
 .head {
     display: flex;
-    width: 90%;
-    margin-left: 5%;
-    height: 100px;
+    width: 100%;
+    height: max-content;
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
 }
 
-.head h1{
-    font-size: 30px;
-    margin-left: 30px;
-    padding-top: 10px;
-}
-
+@media (min-width: 1020px){
 .stick div{
     width: 40px;
     height: 10px;
@@ -25,11 +61,24 @@ body {
     border-radius: 5px;
     background-color: black;
 }
-
 .stick {
     margin-right: 20px;
     margin-left: 90px;
     padding-top: 30px;
+}
+.title{
+    margin-left: 30px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+}
+img {
+    width: 300px;
+    height: 400px;
+    border-radius: 15px;
+}
+.block{
+    width: 300px;
+}
 }
 
 .content-menu {
@@ -85,20 +134,13 @@ body {
 
 .block {
     float: left;
-    width: 300px;
-    margin-left: 10%;
+    margin-left: 50px;
     margin-top: 100px;
     background-color: white;
     padding-bottom: 10px;
     padding-left: 10px;
     padding-top: 10px;
     padding-right: 10px;
-    border-radius: 15px;
-}
-
-img {
-    width: 300px;
-    height: 400px;
     border-radius: 15px;
 }
 
